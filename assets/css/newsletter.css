@@ -1,0 +1,12 @@
+.section_newsletter {
+  display: none;
+}
+
+.section_newsletter.active {
+  display: block;
+}
+
+/* HIDE DISCOUNT IN FOOTER AS KLAVIYO IS OFF */
+.section_newsletter {
+  display: none !important;
+}

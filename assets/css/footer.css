@@ -1,0 +1,30 @@
+/* Footer Styles */
+.footer .container-large > div {
+  padding: 40px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer .container-large > div > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.footer .container-large > div > div > div {
+  color: rgba(255, 255, 255, 0.1);
+  font-size: 14px;
+}
+
+.footer .container-large a {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer .container-large a:hover {
+  color: rgba(255, 255, 255, 1);
+}

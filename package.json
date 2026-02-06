@@ -1,0 +1,40 @@
+{
+  "name": "raymaizing-landing-page",
+  "version": "1.0.0",
+  "description": "Landing page untuk Raymaizing - Platform AI Assistant untuk otomatisasi bisnis",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 8000 -o index.html",
+    "dev": "npx http-server -p 8000 -o index.html -c-1",
+    "build:css": "npx cssnano assets/css/main.css assets/css/main.min.css",
+    "build:js": "npx terser assets/js/*.js -o assets/js/bundle.min.js",
+    "build": "npm run build:css && npm run build:js",
+    "test": "npm run test:html && npm run test:css && npm run test:js",
+    "test:html": "npx html-validator-cli index.html",
+    "test:css": "echo 'CSS validation - manual check required'",
+    "test:js": "npx eslint assets/js/*.js --fix",
+    "lighthouse": "npx @lhci/cli autorun --collect.url=http://localhost:8000/index.html",
+    "format": "npx prettier --write \"**/*.{html,css,js,json,md}\"",
+    "lint": "npx eslint assets/js/*.js"
+  },
+  "keywords": [
+    "landing-page",
+    "ai",
+    "automation",
+    "raymaizing",
+    "webflow"
+  ],
+  "author": "Raymaizing Team",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {},
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raymaizing/landing-page"
+  },
+  "bugs": {
+    "url": "https://github.com/raymaizing/landing-page/issues"
+  },
+  "homepage": "https://sintra.ai"
+}

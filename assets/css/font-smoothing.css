@@ -1,0 +1,6 @@
+/* Keep this css code to improve the font quality */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -o-font-smoothing: antialiased;
+}

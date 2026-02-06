@@ -1,0 +1,791 @@
+<!-- PRICING SECTION - Pilih Paket Sesuai Kebutuhan Anda -->
+<section id="pricing" data-scroll-section="pricing" class="section_pricing background-color-alternate">
+  <div class="padding-global">
+    <div class="container-large padding-section-large">
+      <div class="pricing_component">
+        
+        <!-- Header -->
+        <div class="pricing_header">
+          <div class="text-color-alternate">
+            <h2 class="heading-style-h2">
+              Pilih Paket <span class="gradient-text">Sesuai Kebutuhan</span> Anda
+            </h2>
+            <div class="spacer-small"></div>
+            <p class="text-size-medium text-style-muted">
+              Mulai gratis, Gestur untuk memilih layanan yang sesuai
+            </p>
+          </div>
+        </div>
+
+        <!-- Billing Toggle -->
+        <div class="pricing_toggle-wrapper">
+          <div class="pricing_toggle">
+            <button id="billing-monthly" class="pricing_toggle-btn">
+              Bulanan
+            </button>
+            <button id="billing-annual" class="pricing_toggle-btn active">
+              Tahunan
+              <span class="pricing_badge">-15%</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="spacer-medium"></div>
+
+        <!-- Main Pricing Layout: 2 Columns -->
+        <div class="pricing_main-container">
+          
+          <!-- Left Side: Main Card with Slider -->
+          <div class="pricing_main-card">
+            
+            <!-- Tier Labels at Top -->
+            <div class="pricing_tier-labels-top">
+              <div class="pricing_tier-label-top" data-tier="gratis" data-index="0">
+                <span class="pricing_tier-name-top">Gratis</span>
+                <span class="pricing_tier-range-top">0-50 file</span>
+              </div>
+              
+              <div class="pricing_tier-label-top active" data-tier="pro" data-index="3">
+                <span class="pricing_tier-name-top">Pro ⭐</span>
+                <span class="pricing_tier-range-top">51-1000 file</span>
+              </div>
+              
+              <div class="pricing_tier-label-top" data-tier="bisnis" data-index="8">
+                <span class="pricing_tier-name-top">Bisnis</span>
+                <span class="pricing_tier-range-top">1000+ file</span>
+              </div>
+            </div>
+
+            <!-- Slider Section -->
+            <div class="pricing_slider-section">
+              <div class="pricing_slider-header">
+                <span class="text-size-small text-style-muted">Jumlah File:</span>
+                <span id="file-count-display" class="text-size-large text-weight-semibold">25</span>
+              </div>
+              
+              <div class="pricing_slider-wrapper">
+                <input 
+                  type="range" 
+                  id="main-slider" 
+                  class="pricing_slider" 
+                  min="0" 
+                  max="12" 
+                  step="1" 
+                  value="1"
+                >
+              </div>
+              
+              <div class="pricing_slider-labels">
+                <span class="text-size-tiny">0-50 file</span>
+                <span class="text-size-tiny">1000+ file</span>
+              </div>
+            </div>
+
+            <!-- Price Display -->
+            <div class="pricing_price-display">
+              <div class="pricing_file-count">
+                <span id="file-count-display" class="pricing_file-count-number">100</span>
+                <span class="pricing_file-count-label">file per bulan</span>
+              </div>
+              <div class="pricing_price-main">
+                <span class="pricing_price-old" id="price-old">Rp75.000</span>
+                <span class="pricing_price-amount" id="price-current">Rp63.750</span>
+                <span class="pricing_price-period">/bulan</span>
+              </div>
+            </div>
+
+            <!-- CTA Button -->
+            <button class="pricing_cta-button" id="main-cta-button">
+              <span>Dapatkan Paket Pro</span>
+            </button>
+
+
+          </div>
+
+          <!-- Right Side: Package Info + Features -->
+          <div class="pricing_right-section">
+            
+            <!-- Package Header -->
+            <div class="pricing_package-header">
+              <div class="pricing_package-icon" id="current-icon">⚡</div>
+              <div class="pricing_package-info">
+                <div class="pricing_package-name" id="current-package-name">Ideal untuk individu dan UKM</div>
+                <div class="pricing_package-desc" id="current-package-desc">Fitur lengkap untuk produktivitas maksimal</div>
+              </div>
+            </div>
+
+            <!-- Features List -->
+            <div class="pricing_features-section">
+              <div class="pricing_features-header">
+                <span class="pricing_features-icon">✨</span>
+                <span class="pricing_features-title">Fitur yang termasuk:</span>
+              </div>
+              
+              <div class="pricing_features-list" id="features-list">
+                <!-- Features will be dynamically updated -->
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing Section Styles -->
+<style>
+/* Base Section */
+.section_pricing {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Make pricing section wider like testimonial section */
+.section_pricing .container-large {
+  max-width: 1400px !important; /* Wider container for more breathing room */
+  padding-left: 3rem !important;
+  padding-right: 3rem !important;
+}
+
+.pricing_component {
+  position: relative;
+  z-index: 1;
+}
+
+/* Header */
+.pricing_header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #3b82f6 0%, #60a5fa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Billing Toggle */
+.pricing_toggle-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.pricing_toggle {
+  display: inline-flex;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 4px;
+  gap: 4px;
+}
+
+.pricing_toggle-btn {
+  padding: 12px 24px;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: inherit;
+}
+
+.pricing_toggle-btn.active {
+  background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+  color: white;
+  box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.39);
+}
+
+.pricing_badge {
+  background: #10b981;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Main Container - 2 Column Layout (Left: Card, Right: Info) */
+.pricing_main-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Left: Main Card */
+.pricing_main-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 2rem;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Tier Labels at Top */
+.pricing_tier-labels-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  gap: 0.5rem;
+}
+
+.pricing_tier-label-top {
+  flex: 1;
+  text-align: center;
+  padding: 0.75rem 0.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pricing_tier-label-top:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.pricing_tier-label-top.active {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+
+.pricing_tier-name-top {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  margin-bottom: 0.25rem;
+}
+
+.pricing_tier-range-top {
+  display: block;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Right: Package Info + Features */
+.pricing_right-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.pricing_package-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+}
+
+.pricing_package-icon {
+  font-size: 2.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.pricing_package-info {
+  flex: 1;
+}
+
+.pricing_package-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.pricing_package-desc {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Slider Section */
+.pricing_slider-section {
+  margin-bottom: 2rem;
+}
+
+.pricing_slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.pricing_slider-wrapper {
+  position: relative;
+  margin-bottom: 0.75rem;
+}
+
+.pricing_slider {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.pricing_slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.5);
+  transition: all 0.2s ease;
+}
+
+.pricing_slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.7);
+}
+
+.pricing_slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.5);
+}
+
+.pricing_slider-labels {
+  display: flex;
+  justify-content: space-between;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.75rem;
+}
+
+/* Price Display */
+.pricing_price-display {
+  margin-bottom: 2rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 16px;
+  text-align: center;
+}
+
+.pricing_file-count {
+  margin-bottom: 1rem;
+}
+
+.pricing_file-count-number {
+  display: block;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.pricing_file-count-label {
+  display: block;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.pricing_price-main {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.pricing_price-old {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.4);
+  text-decoration: line-through;
+}
+
+.pricing_price-amount {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #3b82f6 0%, #60a5fa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.pricing_price-period {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* CTA Button */
+.pricing_cta-button {
+  width: 100%;
+  padding: 1.25rem 2rem;
+  background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 1.125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.39);
+  font-family: inherit;
+  margin-bottom: 1.5rem;
+}
+
+.pricing_cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px 0 rgba(59, 130, 246, 0.5);
+}
+
+/* Features Section */
+.pricing_features-section {
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+}
+
+.pricing_features-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.pricing_features-icon {
+  font-size: 1.25rem;
+}
+
+.pricing_features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.pricing_feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.pricing_feature-item:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.pricing_feature-item:first-child {
+  background: rgba(255, 215, 0, 0.1);
+  border-color: rgba(255, 215, 0, 0.3);
+}
+
+.pricing_feature-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.pricing_feature-text {
+  flex: 1;
+}
+
+/* CTA Button */
+.pricing_cta-button {
+  width: 100%;
+  padding: 1.25rem 2rem;
+  background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 1.125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.39);
+  font-family: inherit;
+  margin-bottom: 1.5rem;
+}
+
+.pricing_cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px 0 rgba(59, 130, 246, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .pricing_main-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .pricing_tier-labels-top {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .pricing_main-card {
+    padding: 1.5rem;
+  }
+  
+  .pricing_price-amount {
+    font-size: 1.75rem;
+  }
+  
+  .pricing_file-count-number {
+    font-size: 2.5rem;
+  }
+  
+  .pricing_tier-labels-top {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 479px) {
+  .pricing_toggle-btn {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+  
+  .pricing_main-card {
+    padding: 1.25rem;
+  }
+  
+  .pricing_file-count-number {
+    font-size: 2rem;
+  }
+  
+  .pricing_price-amount {
+    font-size: 1.5rem;
+  }
+}
+</style>
+
+<!-- Pricing Section JavaScript -->
+<script>
+(function() {
+  console.log('🎯 Pricing section script initializing...');
+
+  // Pricing tiers data - NEW PRICING STRUCTURE
+  const customTiers = [
+    { files: 0, price: 0, packageName: "Paket Gratis", packageType: "gratis" },
+    { files: 25, price: 0, packageName: "Paket Gratis", packageType: "gratis" },
+    { files: 50, price: 0, packageName: "Paket Gratis", packageType: "gratis" },
+    { files: 100, price: 25000, packageName: "Paket Pro", packageType: "pro" },
+    { files: 200, price: 49000, packageName: "Paket Pro", packageType: "pro" },
+    { files: 500, price: 99000, packageName: "Paket Pro", packageType: "pro" },
+    { files: 750, price: 135000, packageName: "Paket Pro", packageType: "pro" },
+    { files: 1000, price: 150000, packageName: "Paket Pro", packageType: "pro" },
+    { files: 1500, price: 210000, packageName: "Paket Bisnis", packageType: "bisnis" },
+    { files: 2500, price: 325000, packageName: "Paket Bisnis", packageType: "bisnis" },
+    { files: 5000, price: 600000, packageName: "Paket Bisnis", packageType: "bisnis" },
+    { files: 10000, price: 1100000, packageName: "Paket Bisnis", packageType: "bisnis" },
+    { files: "Unlimited", price: 2000000, packageName: "Paket Bisnis", packageType: "bisnis" }
+  ];
+
+  let isAnnual = true;
+  let selectedTierIndex = 3; // Default: Pro 100 files
+
+  // Package configurations
+  const packageConfig = {
+    gratis: { 
+      icon: '🎉', 
+      badge: 'Gratis', 
+      title: 'Ideal untuk individu dan UKM',
+      desc: 'Fitur lengkap untuk produktivitas maksimal',
+      features: [
+        { icon: '🔥', text: 'Gratis selamanya' },
+        { icon: '✓', text: 'Penamaan AI kustom' },
+        { icon: '✓', text: 'Pemrosesan batch' },
+        { icon: '✓', text: 'Aturan penamaan kustom' },
+        { icon: '✓', text: 'Dukungan prioritas' },
+        { icon: '✓', text: 'Magic Folders' }
+      ]
+    },
+    pro: { 
+      icon: '⚡', 
+      badge: '⚡ Paling Populer', 
+      title: 'Ideal untuk individu dan UKM',
+      desc: 'Fitur lengkap untuk produktivitas maksimal',
+      features: [
+        { icon: '🔥', text: 'Hemat Rp45.000/tahun' },
+        { icon: '✓', text: 'Penamaan AI kustom' },
+        { icon: '✓', text: 'Pemrosesan batch' },
+        { icon: '✓', text: 'Aturan penamaan kustom' },
+        { icon: '✓', text: 'Dukungan prioritas' },
+        { icon: '✓', text: 'Magic Folders' },
+        { icon: '✓', text: 'Template premium' }
+      ]
+    },
+    bisnis: { 
+      icon: '🚀', 
+      badge: 'Enterprise', 
+      title: 'Untuk tim dan enterprise',
+      desc: 'Solusi lengkap untuk organisasi besar',
+      features: [
+        { icon: '🔥', text: 'Hemat Rp360.000/tahun' },
+        { icon: '✓', text: 'Penamaan AI kustom' },
+        { icon: '✓', text: 'Pemrosesan batch' },
+        { icon: '✓', text: 'Aturan penamaan kustom' },
+        { icon: '✓', text: 'Dukungan prioritas' },
+        { icon: '✓', text: 'Magic Folders' },
+        { icon: '✓', text: 'Template premium' },
+        { icon: '✓', text: 'API Access' }
+      ]
+    }
+  };
+
+  // Calculate annual price with 15% discount
+  function calculateAnnualPrice(monthlyPrice) {
+    if (monthlyPrice === 0) return 0;
+    const yearlyPrice = monthlyPrice * 12;
+    const discountedYearlyPrice = Math.round(yearlyPrice * 0.85);
+    return Math.round(discountedYearlyPrice / 12);
+  }
+
+  // Update all UI elements
+  function updateUI() {
+    const tier = customTiers[selectedTierIndex];
+    const config = packageConfig[tier.packageType];
+    const displayPrice = isAnnual ? calculateAnnualPrice(tier.price) : tier.price;
+    const oldPrice = tier.price;
+
+    // Update package info (right side)
+    document.getElementById('current-icon').textContent = config.icon;
+    document.getElementById('current-package-name').textContent = config.title;
+    document.getElementById('current-package-desc').textContent = config.desc;
+
+    // Update file count
+    const fileDisplay = typeof tier.files === 'number' ? tier.files.toLocaleString() : tier.files;
+    document.getElementById('file-count-display').textContent = fileDisplay;
+
+    // Update price
+    if (isAnnual && tier.price > 0) {
+      document.getElementById('price-old').textContent = 'Rp' + oldPrice.toLocaleString();
+      document.getElementById('price-old').style.display = 'inline';
+    } else {
+      document.getElementById('price-old').style.display = 'none';
+    }
+    document.getElementById('price-current').textContent = 'Rp' + displayPrice.toLocaleString();
+
+    // Update popular badge
+    const popularBadge = document.getElementById('popular-badge');
+    if (tier.packageType === 'pro') {
+      popularBadge.innerHTML = '<span>' + config.badge + '</span>';
+      popularBadge.style.display = 'inline-block';
+    } else {
+      popularBadge.style.display = 'none';
+    }
+
+    // Update features list
+    const featuresList = document.getElementById('features-list');
+    featuresList.innerHTML = '';
+    config.features.forEach(function(feature) {
+      const featureItem = document.createElement('div');
+      featureItem.className = 'pricing_feature-item';
+      featureItem.innerHTML = 
+        '<span class="pricing_feature-icon">' + feature.icon + '</span>' +
+        '<span class="pricing_feature-text">' + feature.text + '</span>';
+      featuresList.appendChild(featureItem);
+    });
+
+    // Update CTA button
+    document.getElementById('main-cta-button').innerHTML = '<span>Dapatkan ' + tier.packageName + '</span>';
+
+    // Update active label
+    document.querySelectorAll('.pricing_tier-label-top').forEach(function(label) {
+      label.classList.remove('active');
+    });
+    const activeTier = tier.packageType;
+    const activeLabel = document.querySelector('.pricing_tier-label-top[data-tier="' + activeTier + '"]');
+    if (activeLabel) {
+      activeLabel.classList.add('active');
+    }
+
+    console.log('✅ UI updated:', { tier: tier.packageName, files: tier.files, price: displayPrice });
+  }
+
+  // Initialize on DOM ready
+  function init() {
+    console.log('🚀 Initializing pricing section...');
+
+    // Billing toggle
+    document.getElementById('billing-monthly').addEventListener('click', function() {
+      isAnnual = false;
+      document.getElementById('billing-monthly').classList.add('active');
+      document.getElementById('billing-annual').classList.remove('active');
+      updateUI();
+    });
+
+    document.getElementById('billing-annual').addEventListener('click', function() {
+      isAnnual = true;
+      document.getElementById('billing-annual').classList.add('active');
+      document.getElementById('billing-monthly').classList.remove('active');
+      updateUI();
+    });
+
+    // Main slider
+    const slider = document.getElementById('main-slider');
+    slider.addEventListener('input', function() {
+      selectedTierIndex = parseInt(this.value);
+      updateUI();
+    });
+
+    // Tier labels click
+    document.querySelectorAll('.pricing_tier-label-top').forEach(function(label) {
+      label.addEventListener('click', function() {
+        const index = parseInt(this.getAttribute('data-index'));
+        selectedTierIndex = index;
+        slider.value = index;
+        updateUI();
+      });
+    });
+
+    // CTA button
+    document.getElementById('main-cta-button').addEventListener('click', function() {
+      const tier = customTiers[selectedTierIndex];
+      const url = 'subscribe.html?tier=' + selectedTierIndex + 
+                  '&files=' + tier.files + 
+                  '&price=' + tier.price + 
+                  '&annual=' + isAnnual;
+      console.log('🔗 Redirecting to:', url);
+      window.location.href = url;
+    });
+
+    // Initial update
+    updateUI();
+    console.log('✅ Pricing section initialized successfully!');
+  }
+
+  // Wait for DOM
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>

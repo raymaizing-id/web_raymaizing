@@ -1,0 +1,9 @@
+(function(a,b,c,d,e,f,g){
+  e['ire_o']=c;
+  e[c]=e[c]||function(){(e[c].a=e[c].a||[]).push(arguments)};
+  f=d.createElement(b);
+  g=d.getElementsByTagName(b)[0];
+  f.async=1;
+  f.src=a;
+  g.parentNode.insertBefore(f,g);
+})('https://imp.sintra.ai/A5688274-54b7-4885-b77c-f8a16759ebfe1.js','script','ire',document,window);

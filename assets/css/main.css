@@ -1,0 +1,14 @@
+/* Main CSS - Import all stylesheets */
+
+/* Core Styles */
+@import url('anti-flicker.css');
+@import url('hidden-variation.css');
+@import url('font-smoothing.css');
+
+/* Component Styles */
+@import url('newsletter.css');
+@import url('slider.css');
+@import url('footer.css');
+
+/* External CDN - Keep in HTML */
+/* https://cdn.prod.website-files.com/661d4f6d81ac1042b721396c/css/sintraweb.shared.8901e777c.min.css */
