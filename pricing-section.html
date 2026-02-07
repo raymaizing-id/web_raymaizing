@@ -42,24 +42,24 @@
             <div class="pricing_tier-labels-top">
               <div class="pricing_tier-label-top" data-tier="gratis" data-index="0">
                 <span class="pricing_tier-name-top">Gratis</span>
-                <span class="pricing_tier-range-top">0-50 file</span>
+                <span class="pricing_tier-range-top">0-50 tokenize</span>
               </div>
               
               <div class="pricing_tier-label-top active" data-tier="pro" data-index="3">
                 <span class="pricing_tier-name-top">Pro ⭐</span>
-                <span class="pricing_tier-range-top">51-1000 file</span>
+                <span class="pricing_tier-range-top">51-1000 tokenize</span>
               </div>
               
               <div class="pricing_tier-label-top" data-tier="bisnis" data-index="8">
                 <span class="pricing_tier-name-top">Bisnis</span>
-                <span class="pricing_tier-range-top">1000+ file</span>
+                <span class="pricing_tier-range-top">1000+ tokenize</span>
               </div>
             </div>
 
             <!-- Slider Section -->
             <div class="pricing_slider-section">
               <div class="pricing_slider-header">
-                <span class="text-size-small text-style-muted">Jumlah File:</span>
+                <span class="text-size-small text-style-muted">Jumlah Tokenize:</span>
                 <span id="file-count-display" class="text-size-large text-weight-semibold">25</span>
               </div>
               
@@ -76,16 +76,16 @@
               </div>
               
               <div class="pricing_slider-labels">
-                <span class="text-size-tiny">0-50 file</span>
-                <span class="text-size-tiny">1000+ file</span>
+                <span class="text-size-tiny">0-50 tokenize</span>
+                <span class="text-size-tiny">1000+ tokenize</span>
               </div>
             </div>
 
             <!-- Price Display -->
             <div class="pricing_price-display">
               <div class="pricing_file-count">
-                <span id="file-count-display" class="pricing_file-count-number">100</span>
-                <span class="pricing_file-count-label">file per bulan</span>
+                <span id="file-count-large" class="pricing_file-count-number">100</span>
+                <span class="pricing_file-count-label">tokenize per bulan</span>
               </div>
               <div class="pricing_price-main">
                 <span class="pricing_price-old" id="price-old">Rp75.000</span>
@@ -608,7 +608,7 @@
   ];
 
   let isAnnual = true;
-  let selectedTierIndex = 3; // Default: Pro 100 files
+  let selectedTierIndex = 3; // Default: Pro 100 tokenize
 
   // Package configurations
   const packageConfig = {
@@ -674,6 +674,12 @@
     const displayPrice = isAnnual ? calculateAnnualPrice(tier.price) : tier.price;
     const oldPrice = tier.price;
 
+    console.log('📊 Updating UI:', {
+      tierIndex: selectedTierIndex,
+      packageType: tier.packageType,
+      features: config.features
+    });
+
     // Update package info (right side)
     document.getElementById('current-icon').textContent = config.icon;
     document.getElementById('current-package-name').textContent = config.title;
@@ -682,6 +688,7 @@
     // Update file count
     const fileDisplay = typeof tier.files === 'number' ? tier.files.toLocaleString() : tier.files;
     document.getElementById('file-count-display').textContent = fileDisplay;
+    document.getElementById('file-count-large').textContent = fileDisplay;
 
     // Update price
     if (isAnnual && tier.price > 0) {
@@ -692,26 +699,24 @@
     }
     document.getElementById('price-current').textContent = 'Rp' + displayPrice.toLocaleString();
 
-    // Update popular badge
-    const popularBadge = document.getElementById('popular-badge');
-    if (tier.packageType === 'pro') {
-      popularBadge.innerHTML = '<span>' + config.badge + '</span>';
-      popularBadge.style.display = 'inline-block';
-    } else {
-      popularBadge.style.display = 'none';
-    }
-
     // Update features list
     const featuresList = document.getElementById('features-list');
-    featuresList.innerHTML = '';
-    config.features.forEach(function(feature) {
-      const featureItem = document.createElement('div');
-      featureItem.className = 'pricing_feature-item';
-      featureItem.innerHTML = 
-        '<span class="pricing_feature-icon">' + feature.icon + '</span>' +
-        '<span class="pricing_feature-text">' + feature.text + '</span>';
-      featuresList.appendChild(featureItem);
-    });
+    if (featuresList) {
+      console.log('✅ Features list element found, updating with', config.features.length, 'features');
+      featuresList.innerHTML = '';
+      config.features.forEach(function(feature, index) {
+        console.log('Adding feature', index + 1, ':', feature.text);
+        const featureItem = document.createElement('div');
+        featureItem.className = 'pricing_feature-item';
+        featureItem.innerHTML = 
+          '<span class="pricing_feature-icon">' + feature.icon + '</span>' +
+          '<span class="pricing_feature-text">' + feature.text + '</span>';
+        featuresList.appendChild(featureItem);
+      });
+      console.log('✅ Features list updated, total items:', featuresList.children.length);
+    } else {
+      console.error('❌ Features list element not found!');
+    }
 
     // Update CTA button
     document.getElementById('main-cta-button').innerHTML = '<span>Dapatkan ' + tier.packageName + '</span>';
@@ -726,12 +731,28 @@
       activeLabel.classList.add('active');
     }
 
-    console.log('✅ UI updated:', { tier: tier.packageName, files: tier.files, price: displayPrice });
+    console.log('✅ UI updated:', { tier: tier.packageName, files: tier.files, price: displayPrice, features: config.features.length });
   }
 
   // Initialize on DOM ready
   function init() {
     console.log('🚀 Initializing pricing section...');
+    
+    // Check if elements exist
+    const featuresList = document.getElementById('features-list');
+    const slider = document.getElementById('main-slider');
+    const ctaButton = document.getElementById('main-cta-button');
+    
+    console.log('Elements check:', {
+      featuresList: !!featuresList,
+      slider: !!slider,
+      ctaButton: !!ctaButton
+    });
+
+    if (!featuresList || !slider || !ctaButton) {
+      console.error('❌ Required elements not found!');
+      return;
+    }
 
     // Billing toggle
     document.getElementById('billing-monthly').addEventListener('click', function() {
@@ -749,9 +770,9 @@
     });
 
     // Main slider
-    const slider = document.getElementById('main-slider');
     slider.addEventListener('input', function() {
       selectedTierIndex = parseInt(this.value);
+      console.log('Slider changed to index:', selectedTierIndex);
       updateUI();
     });
 
@@ -761,12 +782,13 @@
         const index = parseInt(this.getAttribute('data-index'));
         selectedTierIndex = index;
         slider.value = index;
+        console.log('Tier label clicked, index:', index);
         updateUI();
       });
     });
 
     // CTA button
-    document.getElementById('main-cta-button').addEventListener('click', function() {
+    ctaButton.addEventListener('click', function() {
       const tier = customTiers[selectedTierIndex];
       const url = 'subscribe.html?tier=' + selectedTierIndex + 
                   '&files=' + tier.files + 
@@ -777,6 +799,7 @@
     });
 
     // Initial update
+    console.log('Calling initial updateUI...');
     updateUI();
     console.log('✅ Pricing section initialized successfully!');
   }

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Raymaizing</title>
+  <link rel="icon" href="assets/img/favicon.png">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'GT Walsheim Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #000;
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    .gradient-bg {
+      background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0a0a0f 100%);
+    }
+
+    .file-card {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .file-card:hover {
+      border-color: rgba(59, 130, 246, 0.3);
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+      border: none;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-outline:hover {
+      border-color: rgba(59, 130, 246, 0.5);
+      background: rgba(59, 130, 246, 0.1);
+    }
+
+    .input-field {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: white;
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+
+    .input-field:focus {
+      outline: none;
+      border-color: #3b82f6;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .input-field::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .logo-badge {
+      background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-weight: 700;
+      color: white;
+    }
+  </style>
+</head>
+<body class="gradient-bg">
+  <div class="min-h-screen flex items-center justify-center p-4">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-5">
+      <div class="absolute top-10 left-10 w-20 h-20 bg-blue-500 rounded-full blur-xl"></div>
+      <div class="absolute top-40 right-20 w-32 h-32 bg-purple-500 rounded-full blur-xl"></div>
+      <div class="absolute bottom-20 left-1/4 w-24 h-24 bg-blue-400 rounded-full blur-xl"></div>
+      <div class="absolute bottom-40 right-10 w-28 h-28 bg-cyan-500 rounded-full blur-xl"></div>
+    </div>
+
+    <div class="w-full max-w-md relative z-10">
+      <!-- Header -->
+      <div class="text-center mb-8">
+        <div class="flex items-center justify-center gap-2 mb-6">
+          <img src="assets/img/logo.png" alt="Raymaizing Logo" class="h-16 w-auto" style="max-width: 280px;">
+        </div>
+        <h1 class="text-3xl font-bold mb-2" id="pageTitle">
+          Masuk ke Akun Anda
+        </h1>
+        <p class="text-gray-400" id="pageSubtitle">
+          Akses semua fitur AI Pengatur File dengan akun Anda
+        </p>
+      </div>
+
+      <!-- Main Form Card -->
+      <div class="file-card p-8 space-y-6">
+        <!-- Social Login -->
+        <div class="space-y-3">
+          <button class="btn-outline w-full flex items-center justify-center gap-3" onclick="handleSocialLogin('Google')">
+            <svg class="w-5 h-5" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="currentColor" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="currentColor" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+              <path fill="currentColor" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+            </svg>
+            <span id="googleBtnText">Masuk dengan Google</span>
+          </button>
+          <div class="grid grid-cols-2 gap-3">
+            <button class="btn-outline flex items-center justify-center gap-2" onclick="handleSocialLogin('Apple')">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+              </svg>
+              Apple
+            </button>
+            <button class="btn-outline flex items-center justify-center gap-2" onclick="handleSocialLogin('GitHub')">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+              GitHub
+            </button>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="absolute inset-0 flex items-center">
+            <div class="w-full border-t border-gray-700"></div>
+          </div>
+          <div class="relative flex justify-center text-sm">
+            <span class="px-4 bg-transparent text-gray-400">atau</span>
+          </div>
+        </div>
+
+        <!-- Email/Password Form -->
+        <form id="authForm" onsubmit="handleSubmit(event)" class="space-y-4">
+          <!-- Name Fields (Register only) -->
+          <div id="nameFields" class="grid grid-cols-2 gap-3" style="display: none;">
+            <div class="space-y-2">
+              <label for="firstName" class="text-sm font-medium">Nama Depan</label>
+              <input
+                id="firstName"
+                type="text"
+                placeholder="John"
+                class="input-field"
+              />
+            </div>
+            <div class="space-y-2">
+              <label for="lastName" class="text-sm font-medium">Nama Belakang</label>
+              <input
+                id="lastName"
+                type="text"
+                placeholder="Doe"
+                class="input-field"
+              />
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="space-y-2">
+            <label for="email" class="text-sm font-medium">Email</label>
+            <div class="relative">
+              <input
+                id="email"
+                type="email"
+                placeholder="nama@email.com"
+                class="input-field pl-10"
+                required
+              />
+              <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="space-y-2">
+            <label for="password" class="text-sm font-medium">Password</label>
+            <div class="relative">
+              <input
+                id="password"
+                type="password"
+                placeholder="••••••••"
+                class="input-field pl-10 pr-10"
+                required
+              />
+              <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+              </svg>
+              <button
+                type="button"
+                onclick="togglePassword()"
+                class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white"
+              >
+                <svg id="eyeIcon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                </svg>
+              </button>
+            </div>
+            <p id="passwordHint" class="text-xs text-gray-400" style="display: none;">
+              Minimal 8 karakter dengan kombinasi huruf, angka, dan simbol
+            </p>
+          </div>
+
+          <!-- Confirm Password (Register only) -->
+          <div id="confirmPasswordField" class="space-y-2" style="display: none;">
+            <label for="confirmPassword" class="text-sm font-medium">Konfirmasi Password</label>
+            <div class="relative">
+              <input
+                id="confirmPassword"
+                type="password"
+                placeholder="••••••••"
+                class="input-field pl-10"
+              />
+              <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Checkboxes -->
+          <div id="loginCheckbox" class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <input type="checkbox" id="remember" class="w-4 h-4 rounded border-gray-600 bg-gray-800">
+              <label for="remember" class="text-sm">Ingat saya</label>
+            </div>
+            <button
+              type="button"
+              class="text-sm text-blue-400 hover:underline"
+              onclick="alert('Fitur reset password akan diimplementasikan!')"
+            >
+              Lupa password?
+            </button>
+          </div>
+
+          <div id="registerCheckbox" class="flex items-start space-x-2" style="display: none;">
+            <input type="checkbox" id="terms" class="w-4 h-4 rounded border-gray-600 bg-gray-800 mt-1">
+            <label for="terms" class="text-sm leading-relaxed">
+              Saya setuju dengan{' '}
+              <a href="#" class="text-blue-400 hover:underline">Syarat & Ketentuan</a>
+              {' '}dan{' '}
+              <a href="#" class="text-blue-400 hover:underline">Kebijakan Privasi</a>
+            </label>
+          </div>
+
+          <!-- Submit Button -->
+          <button 
+            type="submit" 
+            class="btn-primary w-full flex items-center justify-center gap-2"
+            id="submitBtn"
+          >
+            <span id="submitBtnText">Masuk</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+            </svg>
+          </button>
+        </form>
+
+        <!-- Switch Mode -->
+        <div class="text-center">
+          <p class="text-sm text-gray-400">
+            <span id="switchText">Belum punya akun?</span>
+            {' '}
+            <button
+              type="button"
+              onclick="toggleMode()"
+              class="text-blue-400 hover:underline font-medium"
+              id="switchBtn"
+            >
+              Daftar sekarang
+            </button>
+          </p>
+        </div>
+      </div>
+
+      <!-- Security Notice -->
+      <div class="mt-6 file-card p-4">
+        <div class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-green-500 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+          <div class="text-sm">
+            <p class="font-medium text-green-400 mb-1">Keamanan Terjamin</p>
+            <p class="text-gray-400">
+              Data Anda dienkripsi dengan standar industri SSL 256-bit. 
+              Kami tidak pernah menyimpan atau membagikan informasi pribadi Anda.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Back to Home -->
+      <div class="mt-6 text-center">
+        <a href="index.html" class="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+          </svg>
+          Kembali ke Beranda
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let isLogin = true;
+
+    function toggleMode() {
+      isLogin = !isLogin;
+      
+      // Update title and subtitle
+      document.getElementById('pageTitle').textContent = isLogin ? 'Masuk ke Akun Anda' : 'Buat Akun Baru';
+      document.getElementById('pageSubtitle').textContent = isLogin 
+        ? 'Akses semua fitur AI Pengatur File dengan akun Anda'
+        : 'Bergabunglah dengan ribuan pengguna yang sudah merasakan kemudahan AI';
+      
+      // Toggle form fields
+      document.getElementById('nameFields').style.display = isLogin ? 'none' : 'grid';
+      document.getElementById('confirmPasswordField').style.display = isLogin ? 'none' : 'block';
+      document.getElementById('passwordHint').style.display = isLogin ? 'none' : 'block';
+      document.getElementById('loginCheckbox').style.display = isLogin ? 'flex' : 'none';
+      document.getElementById('registerCheckbox').style.display = isLogin ? 'none' : 'flex';
+      
+      // Update button text
+      document.getElementById('submitBtnText').textContent = isLogin ? 'Masuk' : 'Buat Akun';
+      document.getElementById('googleBtnText').textContent = isLogin ? 'Masuk dengan Google' : 'Daftar dengan Google';
+      
+      // Update switch text
+      document.getElementById('switchText').textContent = isLogin ? 'Belum punya akun?' : 'Sudah punya akun?';
+      document.getElementById('switchBtn').textContent = isLogin ? 'Daftar sekarang' : 'Masuk di sini';
+      
+      // Set required attributes
+      document.getElementById('firstName').required = !isLogin;
+      document.getElementById('lastName').required = !isLogin;
+      document.getElementById('confirmPassword').required = !isLogin;
+      document.getElementById('terms').required = !isLogin;
+    }
+
+    function togglePassword() {
+      const passwordField = document.getElementById('password');
+      const type = passwordField.type === 'password' ? 'text' : 'password';
+      passwordField.type = type;
+    }
+
+    function handleSocialLogin(provider) {
+      alert(`${provider} login akan diimplementasikan!`);
+    }
+
+    function handleSubmit(event) {
+      event.preventDefault();
+      
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      
+      if (isLogin) {
+        // Login logic
+        alert(`Login attempt dengan email: ${email}\nFitur autentikasi akan diimplementasikan!`);
+        // TODO: Implement actual login API call
+        // window.location.href = 'dashboard.html';
+      } else {
+        // Register logic
+        const firstName = document.getElementById('firstName').value;
+        const lastName = document.getElementById('lastName').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        const agreeToTerms = document.getElementById('terms').checked;
+        
+        if (password !== confirmPassword) {
+          alert('Password dan konfirmasi password tidak cocok!');
+          return;
+        }
+        
+        if (!agreeToTerms) {
+          alert('Harap setujui syarat dan ketentuan terlebih dahulu!');
+          return;
+        }
+        
+        alert(`Registrasi attempt dengan email: ${email}\nFitur registrasi akan diimplementasikan!`);
+        // TODO: Implement actual register API call
+      }
+    }
+  </script>
+</body>
+</html>

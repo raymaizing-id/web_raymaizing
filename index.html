@@ -55,11 +55,7 @@
     <link href="https://api.intellimize.co" rel="preconnect" />
     <link href="https://log.intellimize.co" rel="preconnect" />
     <link href="https://117378866.intellimizeio.com" rel="preconnect" />
-    <!--
-<script
-  type="text/javascript"
-  src="https://app.termly.io/resource-blocker/b51727e0-491b-4fb6-a2bf-ae762619a4e9?autoBlock=on"
-></script> -->
+    <!-- <script type="text/javascript" src="https://app.termly.io/resource-blocker/b51727e0-491b-4fb6-a2bf-ae762619a4e9?autoBlock=on"></script> -->
     <script>
       (function() {
     var TERMLY_SRC = &#39;https://app.termly.io/resource-blocker/b51727e0-491b-4fb6-a2bf-ae762619a4e9?autoBlock=on&#39;;
@@ -142,12 +138,11 @@
         loadTermly();
       });
   })();
-    </script> -->
+    </script>
     <!-- Marketing -->
     <!-- Klaviyo -->
     <!-- OFFLINE MODE: Klaviyo disabled -->
-    <!-- <script async="" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=WD6mn5">
-    </script>
+    <!-- <script async="" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=WD6mn5"></script> -->
     <!-- Analytics -->
     <!-- Clarity -->
     <script type="text/javascript">
@@ -176,7 +171,7 @@
               }
           }
       }
-    </script> -->
+    </script>
     <!-- Marketing -->
     <!-- TrustPilot -->
     <!-- OFFLINE MODE: TrustPilot disabled -->
@@ -536,13 +531,13 @@
   padding: 0 !important;
 }
 
-/* Make header float above content - ABSOLUTE positioning */
+/* Make header float above content - FIXED positioning for sticky navbar */
 .header-transparent {
-  position: absolute !important;
+  position: fixed !important;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 9999;
   margin: 0 !important;
   padding: 0 !important;
 }
@@ -581,8 +576,8 @@
 }
       </style>
     </div>
-    <div class="header-transparent">
-      <div data-wf--header-white-text--variant="cta-only" class="header">
+    <div class="header-transparent" style="margin-top: 0 !important; padding-top: 0 !important;">
+      <div data-wf--header-white-text--variant="cta-only" class="header" style="margin-top: 0 !important; padding-top: 0 !important;">
         <div class="header__styles w-embed">
           <style>
             /* STICKY NAVBAR - Simple and Clean */
@@ -595,11 +590,97 @@
               z-index: 9999 !important;
               background: transparent !important;
               transition: all 0.3s ease !important;
+              margin: 0 !important;
+              padding: 0 !important;
             }
             
             .header {
-              position: relative !important;
+              position: fixed !important;
+              top: 0 !important;
+              left: 0 !important;
+              right: 0 !important;
+              width: 100% !important;
               background: transparent !important;
+              margin: 0 !important;
+              padding: 0 !important;
+            }
+            
+            /* Navbar wrapper - no background by default */
+            .navbar__wrapper {
+              background: transparent !important;
+              transition: all 0.3s ease !important;
+              border-bottom: none !important;
+            }
+            
+            /* Navbar wrapper with glassmorphism when scrolled */
+            .header-transparent.scrolled {
+              background: rgba(0, 0, 0, 0.3) !important;
+              backdrop-filter: blur(10px) !important;
+              -webkit-backdrop-filter: blur(10px) !important;
+              border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+            }
+            
+            .header-transparent.scrolled .header {
+              background: rgba(0, 0, 0, 0.3) !important;
+              backdrop-filter: blur(10px) !important;
+              -webkit-backdrop-filter: blur(10px) !important;
+            }
+            
+            .header-transparent.scrolled .navbar__wrapper {
+              background: transparent !important;
+            }
+            
+            /* Center the navigation menu */
+            .navbar__navigation {
+              display: flex !important;
+              justify-content: center !important;
+              align-items: center !important;
+              gap: 2rem !important;
+              flex: 1 !important;
+            }
+            
+            .navbar__positioner {
+              display: flex !important;
+              align-items: center !important;
+              width: 100% !important;
+            }
+            
+            /* Reduce navbar height by reducing padding */
+            .navbar,
+            .header .navbar {
+              padding-top: -0.4rem !important;
+              padding-bottom: -0.4rem !important;
+            }
+            
+            .navbar__wrapper {
+              padding-top: 0 !important;
+              padding-bottom: 0 !important;
+            }
+            
+            .navbar__menu {
+              padding-top: 0 !important;
+              padding-bottom: 0 !important;
+            }
+            
+            /* Adjust logo size to match smaller navbar */
+            .logo.big {
+              height: 32px !important;
+            }
+            
+            @media screen and (min-width: 992px) {
+              .logo.big {
+                height: 36px !important;
+              }
+            }
+            
+            /* Remove any gaps at top of page */
+            html, body {
+              margin: 0 !important;
+              padding: 0 !important;
+            }
+            
+            body {
+              padding-top: 0 !important;
             }
             
             .header .logo{
@@ -607,31 +688,6 @@
 }
 .header .navbar__link, .header .navbar__drawer{
 	color: #fff;
-}
-
-/* Logo size adjustments */
-.logo.big {
-  height: 48px !important; /* Increased from default */
-  width: auto !important;
-  max-width: none !important;
-}
-
-@media screen and (max-width: 767px) {
-  .logo.big {
-    height: 40px !important; /* Slightly smaller on mobile */
-  }
-}
-
-@media screen and (min-width: 768px) and (max-width: 991px) {
-  .logo.big {
-    height: 44px !important; /* Medium size on tablet */
-  }
-}
-
-@media screen and (min-width: 992px) {
-  .logo.big {
-    height: 52px !important; /* Larger on desktop */
-  }
 }
 
 .navbar__drawer_card .navbar__link{
@@ -822,17 +878,17 @@
 
 /* PERFECT LEFT ALIGNMENT - Logo & Hero Title */
 
-/* CRITICAL: Make navbar absolute and floating */
+/* CRITICAL: Make navbar fixed and floating */
 .header-transparent,
 div.header-transparent,
 .header-transparent > .header,
 div.header-transparent > div.header {
-  position: absolute !important;
+  position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   width: 100% !important;
-  z-index: 1000 !important;
+  z-index: 9999 !important;
   background: transparent !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -1052,45 +1108,190 @@ div.header-transparent > div.header {
 }
 
             </style>
+            <script>
+              // Add scrolled class to navbar when scrolling
+              window.addEventListener('DOMContentLoaded', function() {
+                const headerTransparent = document.querySelector('.header-transparent');
+                
+                window.addEventListener('scroll', function() {
+                  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                  
+                  if (scrollTop > 50) {
+                    headerTransparent.classList.add('scrolled');
+                  } else {
+                    headerTransparent.classList.remove('scrolled');
+                  }
+                });
+              });
+            </script>
           </div>
           <div class="navbar__wrapper">
-            <a data-wf-native-id-path="ad349e1a-c0c9-dbab-04c7-fdcb238e51b3:e2416028-500d-bf8a-6e18-4f44f2fa2a97:be705a7d-700d-b241-82ef-27f996ec8cf4" data-wf-ao-click-engagement-tracking="true" data-wf-element-id="be705a7d-700d-b241-82ef-27f996ec8cf4" data-wf-component-context="%5B%7B%22componentId%22%3A%22e2416028-500d-bf8a-6e18-4f44f2fa2a96%22%2C%22instanceId%22%3A%22ad349e1a-c0c9-dbab-04c7-fdcb238e51b3%22%7D%2C%7B%22componentId%22%3A%22be705a7d-700d-b241-82ef-27f996ec8cf1%22%2C%22instanceId%22%3A%22e2416028-500d-bf8a-6e18-4f44f2fa2a97%22%7D%5D" href="/" class="navbar__logo w-inline-block">            <img loading="lazy" src="assets/img/logo.png" alt="Sintra.ai homepage" class="logo big" />
+            <a data-wf-native-id-path="ad349e1a-c0c9-dbab-04c7-fdcb238e51b3:e2416028-500d-bf8a-6e18-4f44f2fa2a97:be705a7d-700d-b241-82ef-27f996ec8cf4" data-wf-ao-click-engagement-tracking="true" data-wf-element-id="be705a7d-700d-b241-82ef-27f996ec8cf4" data-wf-component-context="%5B%7B%22componentId%22%3A%22e2416028-500d-bf8a-6e18-4f44f2fa2a96%22%2C%22instanceId%22%3A%22ad349e1a-c0c9-dbab-04c7-fdcb238e51b3%22%7D%2C%7B%22componentId%22%3A%22be705a7d-700d-b241-82ef-27f996ec8cf1%22%2C%22instanceId%22%3A%22e2416028-500d-bf8a-6e18-4f44f2fa2a97%22%7D%5D" href="/" class="navbar__logo w-inline-block">
+              <img loading="lazy" src="assets/img/logo.png" alt="Sintra.ai homepage" class="logo big" />
 </a>
             <div class="navbar__positioner">
               <div class="navbar__menu">
                 <div class="navbar__navigation">
-                  <div class="navbar__drawer">
-                    <div class="navbar__drawer_trigger">
-                      <div class="text-size-medium">
-                        Products
-                      </div>
-                      <div class="icon-1x1-xsmall w-embed">
-                        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path fill-rule="evenodd" clip-rule="evenodd" d="M15.5303 13.0303C15.2374 13.3232 14.7626 13.3232 14.4697 13.0303L11.7324 10.2931C11.3276 9.8883 11.0555 9.61703 10.8292 9.42491C10.6096 9.23847 10.4829 9.17101 10.3863 9.13961C10.1352 9.05803 9.86478 9.05803 9.61373 9.13961C9.51706 9.17101 9.39038 9.23847 9.17076 9.42491C8.94445 9.61704 8.67236 9.8883 8.26759 10.2931L5.53033 13.0303C5.23744 13.3232 4.76256 13.3232 4.46967 13.0303C4.17678 12.7374 4.17678 12.2626 4.46967 11.9697L7.20693 9.23241L7.22846 9.21088C7.60615 8.83317 7.9214 8.51791 8.2 8.2814C8.49056 8.03473 8.79021 7.82999 9.1502 7.71302C9.70252 7.53356 10.2975 7.53356 10.8498 7.71302C11.2098 7.82999 11.5094 8.03473 11.8 8.2814C12.0786 8.51791 12.3939 8.83318 12.7715 9.21089L12.7931 9.23241L15.5303 11.9697C15.8232 12.2626 15.8232 12.7374 15.5303 13.0303Z" fill="currentColor">
-                          </path>
-                        </svg>
-                      </div>
-                    </div>
-                    <div class="navbar__drawer_dropdown">
-                      <div class="navbar__drawer_dropdown__wrapper">
-                        <div class="navbar__helper_drawer">
-                          <a id="w-node-_65d09a83-8751-e486-e179-d133b19364ae-96ec8cf1" data-wf-native-id-path="ad349e1a-c0c9-dbab-04c7-fdcb238e51b3:e2416028-500d-bf8a-6e18-4f44f2fa2a97:65d09a83-8751-e486-e179-d133b19364ae" data-wf-ao-click-engagement-tracking="true" data-wf-element-id="65d09a83-8751-e486-e179-d133b19364ae" data-wf-component-context="%5B%7B%22componentId%22%3A%22e2416028-500d-bf8a-6e18-4f44f2fa2a96%22%2C%22instanceId%22%3A%22ad349e1a-c0c9-dbab-04c7-fdcb238e51b3%22%7D%2C%7B%22componentId%22%3A%22be705a7d-700d-b241-82ef-27f996ec8cf1%22%2C%22instanceId%22%3A%22e2416028-500d-bf8a-6e18-4f44f2fa2a97%22%7D%5D" href="/pricing?" class="helper_drawer__team w-inline-block">                          <div class="text-size-base text-weight-medium">
-                            Full Team
-                          </div>
-                          <div class="text-size-sm text-style-muted">
-                            Sintra X
-                          </div>
-</a>
-                          <a data-wf-native-id-path="ad349e1a-c0c9-dbab-04c7-fdcb238e51b3:e2416028-500d-bf8a-6e18-4f44f2fa2a97:6cab4d69-0578-e64c-1b7a-3dba0eeedb59" data-wf-ao-click-engagement-tracking="true" data-wf-element-id="6cab4d69-0578-e64c-1b7a-3dba0eeedb59" data-wf-component-context="%5B%7B%22componentId%22%3A%22e2416028-500d-bf8a-6e18-4f44f2fa2a96%22%2C%22instanceId%22%3A%22ad349e1a-c0c9-dbab-04c7-fdcb238e51b3%22%7D%2C%7B%22componentId%22%3A%22be705a7d-700d-b241-82ef-27f996ec8cf1%22%2C%22instanceId%22%3A%22e2416028-500d-bf8a-6e18-4f44f2fa2a97%22%7D%5D" href="/soshie" class="helper_drawer__item w-inline-block">                          <img src="assets/img/685292c5ead31a7ca2883493_soshie.avif" loading="lazy" alt="" class="helper_drawer__item_image" />
-                          <div class="helper_drawer__item_content">
-                            <div class="text-size-base text-weight-medium">
-                              Social Media Manager
-                            </div>
-                            <div class="text-size-sm text-style-muted">
-                              Soshie
-                            </div>
-                          </div>
-</a>
+                  <!-- Simple Navigation Menu -->
+                  <a href="#hero-video" class="navbar__link w-inline-block">
+                    <div class="text-size-base">Awal</div>
+                  </a>
+                  <a href="#features-section" class="navbar__link w-inline-block">
+                    <div class="text-size-base">Team</div>
+                  </a>
+                  <a href="#fitur" class="navbar__link w-inline-block">
+                    <div class="text-size-base">Fitur</div>
+                  </a>
+                  <a href="#pricing" class="navbar__link w-inline-block">
+                    <div class="text-size-base">Harga</div>
+                  </a>
+                  <a href="#faq" class="navbar__link w-inline-block">
+                    <div class="text-size-base">FAQ</div>
+                  </a>
+                </div>
+                <div class="header__navigation">
+                  <a href="login.html" class="navbar__link w-inline-block">
+                    <div class="text-size-base">Log in</div>
+                  </a>
+                  <a href="#pricing" class="navbar__link cta w-inline-block">
+                    <div class="text-size-base text-weight-medium">Get Started</div>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="navbar__burger">
+              <div class="burger-line">
+              </div>
+              <div class="burger-line">
+              </div>
+            </div>
+          </div>
+          <div class="navbar__scripts w-embed w-script">
+            <script>
+              let isBurgerOpen = false;
+
+const navbar = document.querySelector('.navbar__menu');
+const burgerIcon = document.querySelector('.navbar__burger');
+const sectionLinks = document.querySelectorAll('[data-scroll-to]');
+let scrollPosition = 0;
+
+const openBurger = () => {
+    isBurgerOpen = true;
+    scrollPosition = window.pageYOffset;
+    navbar.classList.add('active');
+    burgerIcon.classList.add('active');
+    document.documentElement.style.overflowY = 'hidden';
+    document.documentElement.style.height = '100vh';
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollPosition}px`;
+};
+
+const closeBurger = () => {
+    isBurgerOpen = false;
+    navbar.classList.remove('active');
+    burgerIcon.classList.remove('active');
+    document.documentElement.style.overflowY = '';
+    document.documentElement.style.height = '';
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.top = '';
+    window.scrollTo(0, scrollPosition);
+};
+
+sectionLinks.forEach((link) =&gt; {
+	link.addEventListener(&#39;click&#39;, closeBurger);
+})
+
+// Smooth scroll navigation for anchor links
+document.addEventListener(&#39;DOMContentLoaded&#39;, function() {
+  const navLinks = document.querySelectorAll(&#39;a[href^="#"]&#39;);
+  
+  navLinks.forEach(link =&gt; {
+    link.addEventListener(&#39;click&#39;, function(e) {
+      const href = this.getAttribute(&#39;href&#39;);
+      if (href === &#39;#&#39;) return;
+      
+      e.preventDefault();
+      const targetId = href.substring(1);
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        const navbar = document.querySelector(&#39;.header-transparent&#39;);
+        const navbarHeight = navbar ? navbar.offsetHeight : 80;
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: &#39;smooth&#39;
+        });
+        
+        closeBurger();
+      }
+    });
+  });
+  
+  const existingLinks = document.querySelectorAll(&#39;[data-scroll-to]&#39;);
+  existingLinks.forEach(link =&gt; {
+    const scrollTo = link.getAttribute(&#39;data-scroll-to&#39;);
+    if (scrollTo) {
+      link.setAttribute(&#39;href&#39;, &#39;#&#39; + scrollTo);
+    }
+  });
+});
+
+burgerIcon.addEventListener(&#39;click&#39;, () =&gt; {
+    if (!isBurgerOpen) {
+        openBurger();
+    } else {
+        closeBurger();
+    }
+});
+
+const drawers = document.querySelectorAll(&#39;.navbar__drawer&#39;);
+let activeDrawer = null;
+
+drawers.forEach((drawer) =&gt; {
+    const drawerTrigger = drawer.querySelector(&#39;.navbar__drawer_trigger&#39;);
+
+    drawerTrigger.addEventListener(&#39;click&#39;, (event) =&gt; {
+        event.stopPropagation();
+
+        // Close the currently open drawer if it&#39;s not the clicked one
+        if (activeDrawer &amp;&amp; activeDrawer !== drawer) {
+            activeDrawer.classList.remove(&#39;active&#39;);
+        }
+
+        // Toggle the clicked drawer
+        const isDrawerOpen = drawer.classList.toggle(&#39;active&#39;);
+
+        // Update the activeDrawer reference
+        activeDrawer = isDrawerOpen ? drawer : null;
+    });
+});
+
+// Close all drawers if clicking outside of them
+window.addEventListener(&#39;click&#39;, () =&gt; {
+    if (activeDrawer) {
+        activeDrawer.classList.remove(&#39;active&#39;);
+        activeDrawer = null;
+    }
+});
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-wrapper">
+      <div class="global-styles w-embed">
+        <style>
+          html{
+	font-size: 16px;
+}
+
+/*
+html{
+	font-size: 1.0582010582vw;
                           <a data-wf-native-id-path="ad349e1a-c0c9-dbab-04c7-fdcb238e51b3:e2416028-500d-bf8a-6e18-4f44f2fa2a97:8c1d3139-1d79-a5d2-4f40-34fe35e2a3ce" data-wf-ao-click-engagement-tracking="true" data-wf-element-id="8c1d3139-1d79-a5d2-4f40-34fe35e2a3ce" data-wf-component-context="%5B%7B%22componentId%22%3A%22e2416028-500d-bf8a-6e18-4f44f2fa2a96%22%2C%22instanceId%22%3A%22ad349e1a-c0c9-dbab-04c7-fdcb238e51b3%22%7D%2C%7B%22componentId%22%3A%22be705a7d-700d-b241-82ef-27f996ec8cf1%22%2C%22instanceId%22%3A%22e2416028-500d-bf8a-6e18-4f44f2fa2a97%22%7D%5D" href="/cassie" class="helper_drawer__item w-inline-block">                          <img src="assets/img/685292c58c088366f097c07b_cassie.avif" loading="lazy" alt="" class="helper_drawer__item_image" />
                           <div class="helper_drawer__item_content">
                             <div class="text-size-base text-weight-medium">
@@ -1348,6 +1549,43 @@ const closeBurger = () =&gt; {
 sectionLinks.forEach((link) =&gt; {
 	link.addEventListener(&#39;click&#39;, closeBurger);
 })
+
+// Smooth scroll navigation for anchor links
+document.addEventListener(&#39;DOMContentLoaded&#39;, function() {
+  const navLinks = document.querySelectorAll(&#39;a[href^="#"]&#39;);
+  
+  navLinks.forEach(link =&gt; {
+    link.addEventListener(&#39;click&#39;, function(e) {
+      const href = this.getAttribute(&#39;href&#39;);
+      if (href === &#39;#&#39;) return;
+      
+      e.preventDefault();
+      const targetId = href.substring(1);
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        const navbar = document.querySelector(&#39;.header-transparent&#39;);
+        const navbarHeight = navbar ? navbar.offsetHeight : 80;
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: &#39;smooth&#39;
+        });
+        
+        closeBurger();
+      }
+    });
+  });
+  
+  const existingLinks = document.querySelectorAll(&#39;[data-scroll-to]&#39;);
+  existingLinks.forEach(link =&gt; {
+    const scrollTo = link.getAttribute(&#39;data-scroll-to&#39;);
+    if (scrollTo) {
+      link.setAttribute(&#39;href&#39;, &#39;#&#39; + scrollTo);
+    }
+  });
+});
 
 burgerIcon.addEventListener(&#39;click&#39;, () =&gt; {
     if (!isBurgerOpen) {
@@ -2852,7 +3090,7 @@ margin: 0rem !important;
             </div>
           </div>
         </div>
-        <div class="section_home-brain background-color-alternate">
+        <div id="fitur" class="section_home-brain background-color-alternate">
           <div class="home-brain_header">
             <div class="padding-global">
               <div class="container-large">
@@ -2962,7 +3200,7 @@ margin: 0rem !important;
             </div>
           </div>
         </div>
-        <div class="section_home-testimonials background-color-alternate" id="testimonials-section">
+        <div class="section_home-testimonials background-color-alternate" id="testimonials-section" style="display: none;">
           <div class="padding-global">
             <div class="container-large padding-section-large breathing-space">
               <div class="text-align-center margin-bottom margin-xxlarge">
@@ -3176,7 +3414,7 @@ margin: 0rem !important;
                         <div class="home-testimonials_card-header">
                           <div class="grow">
                             <div class="text-weight-medium">
-                              I Love Using Sintra
+                              Arsip Rapi, Pekerjaan Lebih Efisien
                             </div>
                             <div class="spacer-xsmall">
                             </div>
@@ -3186,10 +3424,10 @@ margin: 0rem !important;
                         </div>
                       </div>
                       <p class="text-size-base text-style-muted">
-                        My ?team? in Sintra knocks out tasks like magic, offering fresh ideas for efficiency and better customer outreach. It?s a relief knowing I have AI assistants ready to go around the clock.
+                        Bot organizing file menyelamatkan kami dari kekacauan arsip. File foto dan video dari kamera yang tadinya bernama acak, sekarang otomatis tertata rapi dengan batch renaming dan auto tagging berdasarkan tanggal, kegiatan, dan lokasi. Arsip rapi sejak hari pertama, tidak perlu lagi mengandalkan ingatan personal.
                       </p>
                       <p class="text-size-sm text-color-tertiary">
-                        December 31, 2024?????Kat Angelica?????US
+                        Januari 2026   Dokumentator   Bagian Humas
                       </p>
                     </div>
                   </div>
@@ -3199,7 +3437,7 @@ margin: 0rem !important;
                         <div class="home-testimonials_card-header">
                           <div class="grow">
                             <div class="text-weight-medium">
-                              Early but satisfied user
+                              Implementasi Mudah, Hasil Langsung Terasa
                             </div>
                             <div class="spacer-xsmall">
                             </div>
@@ -3209,10 +3447,10 @@ margin: 0rem !important;
                         </div>
                       </div>
                       <p class="text-size-base text-style-muted">
-                        I?ve only been using Sintra for a couple of weeks, but the experience has been great?especially with the social media bot reaching out to me with new ideas. The pull model feels super proactive and makes me more confident in my daily tasks.
+                        Kami baru menggunakan Raymaizing beberapa minggu, tapi hasilnya sudah sangat terasa. Bot organizing file langsung menata arsip dokumentasi kami yang berantakan. Tim tidak perlu training lama, interface-nya intuitif dan mudah dipahami. Manfaatnya langsung terasa di pekerjaan harian.
                       </p>
                       <p class="text-size-sm text-color-tertiary">
-                        December 30, 2024?????Bayan Qandil?????US
+                        Januari 2026   Staf Dokumentasi   Sekretariat
                       </p>
                     </div>
                     <div class="home-testimonials_card">
@@ -3220,7 +3458,7 @@ margin: 0rem !important;
                         <div class="home-testimonials_card-header">
                           <div class="grow">
                             <div class="text-weight-medium">
-                              1st class service by everyone at Sintra.ai
+                              Dukungan Tim Raymaizing Sangat Responsif
                             </div>
                             <div class="spacer-xsmall">
                             </div>
@@ -3230,10 +3468,10 @@ margin: 0rem !important;
                         </div>
                       </div>
                       <p class="text-size-base text-style-muted">
-                        I challenge anyone to compare other platforms to Sintra.ai and their staff?you won?t find a better customer experience. Everyone is professional, responsive, and genuinely cares about helping. Truly top-notch!
+                        Tim Raymaizing sangat profesional dan responsif. Saat kami butuh kustomisasi untuk kebutuhan instansi, mereka langsung membantu dengan solusi yang tepat. Support-nya cepat, komunikasinya jelas, dan benar-benar memahami kebutuhan institusi pemerintah. Pengalaman terbaik dalam implementasi teknologi.
                       </p>
                       <p class="text-size-sm text-color-tertiary">
-                        December 28, 2024?????Timothy Montjoy?????US
+                        Januari 2026   IT Coordinator   Biro Umum
                       </p>
                     </div>
                     <div class="home-testimonials_card">
@@ -3241,7 +3479,7 @@ margin: 0rem !important;
                         <div class="home-testimonials_card-header">
                           <div class="grow">
                             <div class="text-weight-medium">
-                              Sintra is Amazing!
+                              Solusi Tepat untuk Institusi Pemerintah
                             </div>
                             <div class="spacer-xsmall">
                             </div>
@@ -3251,10 +3489,10 @@ margin: 0rem !important;
                         </div>
                       </div>
                       <p class="text-size-base text-style-muted">
-                        This platform helps me like a full-time employee would. As a startup, I can?t afford extra staff, so Sintra stepped in to handle complex tasks and free me up for big-picture thinking.
+                        Platform Raymaizing membantu kami seperti memiliki asisten full-time. Dengan anggaran terbatas, kami tidak bisa menambah pegawai baru. Bot-bot AI ini mengisi gap tersebut dengan menangani tugas-tugas kompleks, sehingga tim bisa fokus pada strategi dan pengambilan keputusan yang lebih penting.
                       </p>
                       <p class="text-size-sm text-color-tertiary">
-                        December 28, 2024?????Jules Kincaid?????US
+                        Januari 2026   Kepala Bagian   Sekretariat Jenderal
                       </p>
                     </div>
                     <div class="home-testimonials_card">
@@ -3262,7 +3500,7 @@ margin: 0rem !important;
                         <div class="home-testimonials_card-header">
                           <div class="grow">
                             <div class="text-weight-medium">
-                              So Much on My Plate, But Sintra Makes It Easy
+                              Hemat Biaya, Hasil Maksimal
                             </div>
                             <div class="spacer-xsmall">
                             </div>
@@ -3272,10 +3510,10 @@ margin: 0rem !important;
                         </div>
                       </div>
                       <p class="text-size-base text-style-muted">
-                        I?m juggling multiple hats in my business, and these 12 AI ?helpers? lighten the load. They even crack jokes and celebrate milestones with me! I saved thousands in consultant fees by letting Sintra handle SEO and content tasks.
+                        Dengan Raymaizing, kami menghemat anggaran yang tadinya dialokasikan untuk outsourcing berbagai pekerjaan administratif. Bot-bot AI ini menangani organizing file, pembuatan laporan, dan pencarian arsip dengan hasil yang konsisten. Investasi yang sangat worth it untuk efisiensi jangka panjang.
                       </p>
                       <p class="text-size-sm text-color-tertiary">
-                        December 30, 2024?????Michelle Smith?????US
+                        Januari 2026   Kepala Subbagian Keuangan   Direktorat
                       </p>
                     </div>
                     <div class="home-testimonials_card">
@@ -3283,7 +3521,7 @@ margin: 0rem !important;
                         <div class="home-testimonials_card-header">
                           <div class="grow">
                             <div class="text-weight-medium">
-                              I Was Pleasantly Surprised with Sintra
+                              Transformasi Digital yang Nyata
                             </div>
                             <div class="spacer-xsmall">
                             </div>
@@ -3293,10 +3531,10 @@ margin: 0rem !important;
                         </div>
                       </div>
                       <p class="text-size-base text-style-muted">
-                        This platform helps me like a full-time employee would. As a startup, I can?t afford extra staff, so Sintra stepped in to handle complex tasks and free me up for big-picture thinking.
+                        Raymaizing memberikan solusi transformasi digital yang konkret dan langsung bisa dirasakan manfaatnya. Bukan sekadar teknologi canggih, tapi benar-benar menjawab kebutuhan operasional harian kami. Bot-bot ini membantu kami bekerja lebih cerdas, lebih cepat, dan lebih terstruktur.
                       </p>
                       <p class="text-size-sm text-color-tertiary">
-                        December 24, 2024?????Domanic R.H?????US
+                        Januari 2026   Staf Ahli   Kementerian
                       </p>
                     </div>
                   </div>
